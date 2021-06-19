@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" href="./icon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Comfortaa', cursive;
+
+    }
+
+    body {
+        background-color: #d6d6d6;
+        font-family: 'Comfortaa', cursive;
+
+    }
+
+    ::selection {
+        background-color: rgb(31, 29, 29);
+        color: #d6d6d6;
+        text-decoration: none;
+    }
+
+    button {
+        display: block;
+        margin: 150px auto 40px auto;
+        padding: 10px 35px 10px 35px;
+        width: 30%;
+        min-height: 40px;
+        border: none;
+        border-radius: 60px;
+        background: #d6d6d6;
+        color: rgb(39, 36, 36);
+        box-shadow: 5px 5px 9px #adadad,
+            -5px -5px 9px #ffffff;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    button:focus {
+        box-shadow: inset 5px 5px 9px #adadad, inset -5px -5px 9px #ffffff;
+
+    }
+
+
+    svg {
+        height: 44px;
+        width: 35px;
+        fill: rgb(24, 24, 24);
+    }
+
+    #note {
+        display: block;
+        margin: auto;
+        width: 50%;
+        text-align: center;
+        color: rgba(39, 36, 36, 0.623);
+    }
+
+    .outputAndMic {
+        margin: auto;
+        padding: 20px;
+        width: 40%;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    #checkMic {
+        font-size: 20px;
+        padding: 15px;
+        line-height: 1;
+        color: rgba(39, 36, 36, 0.815);
+    }
+
+    #output {
+        margin-top: 8%;
+        text-align: center;
+        line-height: 25px;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(39, 36, 36, 0.863);
+    }
+
+    .hide {
+        display: none;
+    }
+
+    #projectBy {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 8%;
+        width: 100vw;
+        color: #a1a1a1;
+        font-size: 16px;
+    }
+    .projectByDOT a{
+        color: #505050;
+        text-decoration: none;
+
+    }
+    .projectByDOT a:hover {
+        color: #505050;
+        cursor: crosshair;
+        cursor: pointer;
+
+    }
+
+    /* for mobiles */
+    @media screen and (max-width: 600px) {
+
+        button {
+            margin: 130px auto 30px auto;
+            padding: 10px 35px 10px 35px;
+            width: 38%;
+
+        }
+
+        #note {
+            display: block;
+            margin: auto;
+            padding: 10px;
+            width: 80%;
+            text-align: center;
+            color: rgba(39, 36, 36, 0.623);
+        }
+
+        .outputAndMic {
+            margin: 1% auto;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #checkMic {
+            font-size: 20px;
+        }
+
+        #output {
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+            font-weight: 500;
+            color: rgba(34, 31, 31, 0.788);
+            margin-top: 4%;
+        }
+    }
+
+    /* for tablets  */
+    @media only screen and (min-width: 600px) and (max-width:1100px) {
+        button {
+            margin: 180px auto 30px auto;
+            padding: 10px 35px 10px 35px;
+            width: 38%;
+
+        }
+
+        #note {
+            display: block;
+            margin: auto;
+            padding: 10px;
+            width: 80%;
+            text-align: center;
+            font-size: 20px;
+            color: rgba(39, 36, 36, 0.623);
+        }
+
+        .outputAndMic {
+            margin: 3% auto;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #checkMic {
+            font-size: 25px;
+        }
+
+        #output {
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            font-weight: 700;
+            color: rgba(34, 31, 31, 0.788);
+            margin-top: 8%;
+        }
+
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!-- BUTTON TO SPEAK  -->
+        <button type="submit" onclick="runSpeechRecognition()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <g data-name="Layer 2">
+                    <g data-name="mic">
+                        <rect opacity="0" />
+                        <path
+                            d="M12 15a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4zm-2-9a2 2 0 0 1 4 0v5a2 2 0 0 1-4 0z" />
+                        <path
+                            d="M19 11a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 0 0-2 0 7 7 0 0 0 6 6.92V20H8.89a.89.89 0 0 0-.89.89v.22a.89.89 0 0 0 .89.89h6.22a.89.89 0 0 0 .89-.89v-.22a.89.89 0 0 0-.89-.89H13v-2.08A7 7 0 0 0 19 11z" />
+                    </g>
+                </g>
+            </svg>
+        </button>
+
+        <!-- NOTE FOR VISTORS  -->
+        <div id="note"><span>Note : </span>*Be loud and clear </div>
+
+        <!-- TO CHECK THE MIC AND OUTPUT  -->
+        <div class="outputAndMic">
+            <div id="checkMic"></div>
+            <div id="output" class="hide"></div>
+        </div>
+
+        <!-- PROJECT BY  -->
+        <div id="projectBy">
+            <p class="projectByDOT">
+                Project by
+                <span id="dotdevelopingteam">
+                    <a href="https://instagram.com/dotdevelopingteam?utm_medium=copy_link" target="_blank">
+                        dotdevelopingteam
+                    </a>
+                </span>
+            </p>
+        </div>
+
+    </div>
+
+
+
+</body>
+<script>
+    function runSpeechRecognition() {
+        let output = document.getElementById("output")
+        let checkMic = document.getElementById("checkMic")
+        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+        var recognition = new SpeechRecognition()
+
+        recognition.onstart = function () {
+            checkMic.innerHTML = "<small>Please Speak Something ...<small/>"
+        }
+
+        recognition.onspeechend = function () {
+            checkMic.innerHTML = "<small> Hope You Finished...<small/>"
+            recognition.stop()
+        }
+        recognition.onresult = function () {
+            let transcript = event.results[0][0].transcript
+            let confidence = event.results[0][0].confidence
+            output.innerHTML = "<b> Text : " + transcript + "<br/><b> Confidence : " + Math.floor(confidence * 100) + " %"
+            output.classList.remove("hide")
+
+        }
+        recognition.start();
+    }
+</script>
+
+</html>
